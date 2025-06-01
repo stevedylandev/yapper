@@ -1,17 +1,21 @@
 {
-  "name": "server",
-  "version": "0.0.1",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "build": "tsc",
-    "dev": "bun --watch run src/index.ts"
-  },
-  "dependencies": {
-    "hono": "^4.7.7",
-    "shared": "workspace:*"
-  },
-  "devDependencies": {
-    "@types/bun": "latest"
-  }
+	"name": "server",
+	"version": "0.0.1",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"dev": "wrangler dev",
+		"deploy": "wrangler deploy src/index.ts --minify",
+		"cf-typegen": "wrangler types --env-interface CloudflareBindings"
+	},
+	"dependencies": {
+		"@farcaster/hub-nodejs": "^0.13.5",
+		"hono": "^4.7.7",
+		"shared": "workspace:*"
+	},
+	"devDependencies": {
+		"@cloudflare/workers-types": "^4.20250531.0",
+		"@types/bun": "latest",
+		"wrangler": "^4.4.0"
+	}
 }
